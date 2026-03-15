@@ -41,40 +41,40 @@ checking code on pull requests and deploying on merge or version tag.
 ```
 my-terraform-project/
 │
-├── modules/                    # Reusable Terraform modules
-│   ├── vpc/                    # VPC, subnets, IGW, route tables, security groups
+├── modules/                   
+│   ├── vpc/                   
 │   │   ├── main.tf
 │   │   ├── variables.tf
 │   │   └── outputs.tf
-│   ├── ec2/                    # EC2 bastion host with user data bootstrap
+│   ├── ec2/                   
 │   │   ├── main.tf
 │   │   ├── variables.tf
 │   │   └── outputs.tf
-│   └── rds/                    # RDS Postgres instance and DB subnet group
+│   └── rds/                   
 │       ├── main.tf
 │       ├── variables.tf
 │       └── outputs.tf
 │
 ├── environments/
-│   ├── staging/                # Staging environment
-│   │   ├── main.tf             # Calls all three modules
-│   │   ├── backend.tf          # Remote state: s3 key = staging/terraform.tfstate
-│   │   ├── variables.tf        # Variable declarations
-│   │   ├── terraform.tfvars    # Staging values (git-ignored)
+│   ├── staging/                
+│   │   ├── main.tf            
+│   │   ├── backend.tf         
+│   │   ├── variables.tf       
+│   │   ├── terraform.tfvars    
 │   │     
-│   └── production/             # Production environment
-│       ├── main.tf             # Identical structure to staging
-│       ├── backend.tf          # Remote state: s3 key = production/terraform.tfstate
+│   └── production/            
+│       ├── main.tf            
+│       ├── backend.tf         
 │       ├── variables.tf
-│       ├── terraform.tfvars    # Production values (git-ignored)
+│       ├── terraform.tfvars    
 │       
 │
 ├── .github/
 │   └── workflows/
-│       └── terraform.yml       # GitHub Actions CI/CD pipeline
+│       └── terraform.yml      
 │
 ├              
-└── README.md                   # This file
+└── README.md                  
 ```
 
 ---
@@ -93,7 +93,7 @@ Internet Gateway
 │  ┌─────────────────┐   ┌───────────────────┐  │
 │  │  Public Subnet  │   │  Private Subnet   │  │
 │  │                 │   │                   │  │
-│  │  EC2 Bastion    │──▶│  RDS Postgres     │  │
+│  │  EC2 Bastion    │──▶│  RDS Postgres    │  │
 │  │  (t2.micro)     │   │  (db.t3.micro)    │  │
 │  │  SSH: your IP   │   │  port 5432:       │  │
 │  │  only           │   │  bastion only     │  │
